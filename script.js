@@ -7,9 +7,10 @@ function main() {
   for (let j = 0; j < 19; ++j) {
     for (let i = 0; i < 23; ++i) {
       let cell = spawnFromTemplate(cellTemplate, cellContainer);
+      console.log(cell);
 
       // if (j % 2 !== 0) {
-      //   cell.classList.add("odd-row");
+      //   cell.style.backgroundColor = "red";
       // }
     }
   }
@@ -19,6 +20,7 @@ function main() {
 
 function spawnFromTemplate(template, container) {
   const clone = template.content.cloneNode(true);
-  container.appendChild(clone);
-  return clone;
+  const node = document.importNode(clone, true);
+  container.appendChild(node);
+  return node;
 }
