@@ -1,3 +1,62 @@
 :root {
-  background-color: red;
+  --color0: #111111;
+  --color1: #333333;
+  --color2: #555555;
+  --color3: #888888;
+  --color4: #eeeeee;
+}
+
+@media only screen and (min-aspect-ratio: 4/3) {
+  div#mobile-blocker {
+    visibility: hidden;
+  }
+}
+
+div#mobile-blocker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color0);
+  color: var(--color4);
+}
+
+p.popup-text {
+  display: inline-block;
+  width: 60%;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  padding: 10px;
+  gap: 10px;
+  background-color: var(--color0);
+}
+
+div.main-section {
+  flex-basis: 0px;
+  background-color: var(--color1);
+}
+
+div#cells {
+  flex-grow: 2;
+}
+
+div#panel {
+  flex-grow: 1;
 }
