@@ -7,11 +7,13 @@ function main() {
   for (let j = 0; j < 19; ++j) {
     for (let i = 0; i < 23; ++i) {
       let cell = spawnFromTemplate(cellTemplate, cellContainer);
-      console.log(cell);
 
-      // if (j % 2 !== 0) {
-      //   cell.style.backgroundColor = "red";
-      // }
+      if (j % 2 !== 0) {
+        cell.classList.add("odd-row");
+      }
+      if (j % 2 !== 0 && i === 22) {
+        cell.classList.add("leftover");
+      }
     }
   }
 
@@ -20,7 +22,7 @@ function main() {
 
 function spawnFromTemplate(template, container) {
   const clone = template.content.cloneNode(true);
-  const node = document.importNode(clone, true);
-  container.appendChild(node);
-  return node;
+  const elem = clone.children[0];
+  container.appendChild(elem);
+  return elem;
 }
