@@ -16,22 +16,26 @@ function createCells(width, height) {
 
   for (let j = 0; j < height; ++j) {
     for (let i = 0; i < width; ++i) {
-      let cell = spawnFromTemplate(cellTemplate, cellContainer);
-
-      cell.addEventListener("click", onCellClick);
-      cell.dataset.index = j*width + i;
-
-      if (j % 2 !== 0) {
-        cell.classList.add("odd-row");
-      }
-      if (j % 2 !== 0 && i + 1 === width) {
-        cell.classList.add("leftover");
-      }
-
-      let selection = spawnFromTemplate(selectionTemplate, selectionContainer);
-      selection.textContent = `${i + 1}.${j + 1}`;
+      createCell(cellTemplate, cellContainer, selectionTemplate, selectionContainer, i, j, width);
     }
   }
+}
+
+function createCell(ct, cc, st, sc, i, j, width) {
+  let cell = spawnFromTemplate(ct, cc);
+
+  cell.addEventListener("click", onCellClick);
+  cell.dataset.index = j*width + i;
+
+  if (j % 2 !== 0) {
+    cell.classList.add("odd-row");
+  }
+  if (j % 2 !== 0 && i + 1 === width) {
+    cell.classList.add("leftover");
+  }
+
+  let selection = spawnFromTemplate(st, sc);
+  selection.textContent = `${i + 1}.${j + 1}`;
 }
 
 function spawnFromTemplate(template, container) {
