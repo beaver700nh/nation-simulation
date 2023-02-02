@@ -26,12 +26,12 @@
         <button class="selection-clear" onclick="clearSelection()">Clear Selection</button>
       </div>
       <div class="cell-editor">
-        <button class="cell-edit-confirm" onclick="setCellTypes()">Build hexes as</button>
         <select class="cell-type">
           <optgroup label="Miscellaneous">
             <option value=""    >&mdash;</option>
             <option value="Road">Road</option>
             <option value="Rivr">River</option>
+            <option value="RivD">River (Dammed)</option>
             <option value="Ocen">Ocean</option>
             <option value="OfLm">Off-Limits</option>
           </optgroup>
@@ -94,6 +94,7 @@
             <option value="Rlrd">Railroads</option>
           </optgroup>
         </select>
+        <button class="cell-edit-confirm" onclick="setCellTypes()">Build Hexes</button>
       </div>
       <div class="file-io">
         <button class="load" onclick="fileLoad()">Import</button>

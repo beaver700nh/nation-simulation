@@ -74,10 +74,35 @@ function setCellTypes() {
 
   for (let cell of selected) {
     cell.dataset.cellType = request;
+    cell.innerHTML = generateCellDisplayName(request);
 
     const index = cell.dataset.index;
     let selection = document.getElementsByClassName("selection-list")[0].children[index];
     selection.textContent = generateCellDescription(cell.dataset, selection.dataset);
+  }
+}
+
+function generateCellDisplayName(shortName) {
+  if (shortName in createSet("", "Rivr", "RivD", "Ocen", "Road", "OfLm")) {
+    return "";
+  }
+
+  if (shortName.length < 4) {
+    return shortName;
+  }
+
+  const words = (shortName.match(/[A-Z]/g) || []).length;
+
+  if (shortName[2] === shortName[2].toUpperCase() || words === 1) {
+    return `${shortName.substr(0, 2)}<br/>${shortName.substr(2)}`;
+  }
+
+  if (shortName[3] === shortName[3].toUpperCase()) {
+    return `${shortName.substr(0, 3)}<br/>${shortName[3]}`;
+  }
+
+  if (shortName[1] === shortName[1].toUpperCase()) {
+    return `${shortName[0]}<br/>${shortName.substr(1)}`;
   }
 }
 
@@ -94,8 +119,20 @@ function generateCellDescription(cd, sd) {
   return `${coords} - ${shortName} (${longName})`;
 }
 
+function createSet(...items) {
+  let theSet = {};
+
+  for (const i of items) {
+    theSet[i] = true;
+  }
+
+  return theSet;
+}
+
 function fileLoad() {
-  document.getElementById("file-uploader").click();
+  const uploader = document.getElementById("file-uploader");
+  uploader.value = "";
+  uploader.click();
 }
 
 function onFileUploaded() {
@@ -110,12 +147,17 @@ function parseFile(text) {
   const hexData = JSON.parse(text);
 
   const cellContainer = document.getElementsByClassName("cell-container")[0];
-
   cellContainer.innerHTML = "";
+
+  const selectionContainer = document.getElementsByClassName("selection-list")[0];
+  selectionContainer.innerHTML = "";
+
   createCells(hexData.width, hexData.height);
 
   for (const cellData of hexData.hexes) {
-    cellContainer.children[cellData.index].dataset.cellType = cellData.cellType;
+    let cell = cellContainer.children[cellData.index];
+    cell.dataset.cellType = cellData.cellType;
+    cell.innerHTML = generateCellDisplayName(cellData.cellType);
   }
 }
 

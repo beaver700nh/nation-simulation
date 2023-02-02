@@ -89,7 +89,7 @@ div.main-section {
 /******************************/
 
 div#cells {
-  flex-grow: 2;
+  flex-grow: 5;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -115,7 +115,14 @@ span.cell {
   margin-bottom: calc(-28.8675% - calc(0.1340 * var(--cell-spacing)));
   clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
   background-color: var(--color2);
+  font-size: 1vw;
   aspect-ratio: 0.8660;
+  display: inline-flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 0.8;
 }
 
 span.cell:hover {
@@ -155,7 +162,7 @@ span.cell.selected::after {
 /******************************/
 
 div#panel {
-  flex-grow: 1;
+  flex-grow: 3;
   display: flex;
   flex-flow: column nowrap;
   justify-content: start;
@@ -244,10 +251,17 @@ span.cell[data-cell-type="Road"] {
 
 span.cell[data-cell-type="Rivr"] {
   background-color: paleturquoise;
+  color: var(--color0);
+}
+
+span.cell[data-cell-type="RivD"] {
+  background-color: paleturquoise;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Ocen"] {
   background-color: lightskyblue;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="OfLm"] {
@@ -256,14 +270,17 @@ span.cell[data-cell-type="OfLm"] {
 
 span.cell[data-cell-type="WtFm"] {
   background-color: wheat;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="PgFm"] {
   background-color: pink;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Orch"] {
   background-color: palevioletred;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Fndy"] {
@@ -272,14 +289,17 @@ span.cell[data-cell-type="Fndy"] {
 
 span.cell[data-cell-type="GsMl"] {
   background-color: bisque;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="RmMl"] {
   background-color: lightsalmon;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="SwMl"] {
   background-color: burlywood;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Ship"] {
@@ -292,14 +312,17 @@ span.cell[data-cell-type="HpPl"] {
 
 span.cell[data-cell-type="ToPl"] {
   background-color: tan;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="RcPl"] {
   background-color: limegreen;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="CoPl"] {
   background-color: whitesmoke;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="SlvP"] {
@@ -308,6 +331,7 @@ span.cell[data-cell-type="SlvP"] {
 
 span.cell[data-cell-type="FshP"] {
   background-color: silver;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="WhoP"] {
@@ -316,6 +340,7 @@ span.cell[data-cell-type="WhoP"] {
 
 span.cell[data-cell-type="FurP"] {
   background-color: darkkhaki;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="NvlP"] {
@@ -328,14 +353,17 @@ span.cell[data-cell-type="Whrf"] {
 
 span.cell[data-cell-type="Pmtg"] {
   background-color: orange;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Qmtg"] {
   background-color: orange;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="AngC"] {
   background-color: lightcoral;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Tvrn"] {
@@ -344,14 +372,17 @@ span.cell[data-cell-type="Tvrn"] {
 
 span.cell[data-cell-type="Grsn"] {
   background-color: linen;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="News"] {
   background-color: lemonchiffon;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Unvy"] {
   background-color: turquoise;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Shoe"] {
@@ -364,6 +395,7 @@ span.cell[data-cell-type="Tany"] {
 
 span.cell[data-cell-type="Cmm"] {
   background-color: peru;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="SMkt"] {
@@ -372,6 +404,7 @@ span.cell[data-cell-type="SMkt"] {
 
 span.cell[data-cell-type="FMkt"] {
   background-color: silver;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="WMkt"] {
@@ -380,6 +413,7 @@ span.cell[data-cell-type="WMkt"] {
 
 span.cell[data-cell-type="FurM"] {
   background-color: darkkhaki;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="NMkt"] {
@@ -388,14 +422,17 @@ span.cell[data-cell-type="NMkt"] {
 
 span.cell[data-cell-type="Town"] {
   background-color: moccasin;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Inn"] {
   background-color: lightgreen;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Hspl"] {
   background-color: tomato;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Lbry"] {
@@ -404,26 +441,31 @@ span.cell[data-cell-type="Lbry"] {
 
 span.cell[data-cell-type="Cths"] {
   background-color: gold;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="ShFy"] {
-  background-color: chocolate
+  background-color: chocolate;
 }
 
 span.cell[data-cell-type="TxMl"] {
   background-color: lightgoldenrodyellow;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Canl"] {
   background-color: cyan;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="FlMl"] {
   background-color: bisque;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="LmMl"] {
   background-color: burlywood;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="RgMl"] {
@@ -432,10 +474,12 @@ span.cell[data-cell-type="RgMl"] {
 
 span.cell[data-cell-type="RmDs"] {
   background-color: navajowhite;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Tnmt"] {
   background-color: linen;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="CmDk"] {
@@ -452,6 +496,7 @@ span.cell[data-cell-type="SBnk"] {
 
 span.cell[data-cell-type="NBnk"] {
   background-color: springgreen;
+  color: var(--color0);
 }
 
 span.cell[data-cell-type="Dept"] {
