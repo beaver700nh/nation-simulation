@@ -95,7 +95,28 @@ function generateCellDescription(cd, sd) {
 }
 
 function fileLoad() {
-  //
+  document.getElementById("file-uploader").click();
+}
+
+function onFileUploaded() {
+  const input = event.target;
+
+  if (input.files.length > 0) {
+    input.files[0].text().then(parseFile);
+  }
+}
+
+function parseFile(text) {
+  const hexData = JSON.parse(text);
+
+  const cellContainer = document.getElementsByClassName("cell-container")[0];
+
+  cellContainer.innerHTML = "";
+  createCells(hexData.width, hexData.height);
+
+  for (const cellData of hexData.hexes) {
+    cellContainer.children[cellData.index].dataset.cellType = cellData.cellType;
+  }
 }
 
 function fileSave() {
