@@ -85,11 +85,11 @@ function generateCellDescription(cd, sd) {
   const coords = `${parseInt(sd.col, 10) + 1}.${parseInt(sd.row, 10) + 1}`;
 
   if (!cd.cellType) {
-    return `${coords} - empty hex`;
+    return `${coords} - Empty Land Hex`;
   }
 
   const shortName = cd.cellType;
-  const longName = document.querySelector(`.cell-type > option[value="${shortName}"]`).textContent;
+  const longName = document.querySelector(`.cell-type option[value="${shortName}"]`).textContent;
 
   return `${coords} - ${shortName} (${longName})`;
 }
