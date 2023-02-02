@@ -198,13 +198,14 @@ button.selection-clear {
 
 div.cell-editor {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: stretch;
   align-items: stretch;
   gap: 8px;
 }
 
 button.cell-edit-confirm {
+  flex: 1 1;
   padding: 5px;
   background-color: var(--color2);
   border: none;
@@ -212,7 +213,23 @@ button.cell-edit-confirm {
 }
 
 select.cell-type {
+  flex: 1 1;
+  padding: 5px;
+  background-color: var(--color2);
+  border: none;
+}
+
+div.file-io {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 8px;
+}
+
+button.load, button.save {
   flex-grow: 1;
+  padding: 5px;
   background-color: var(--color2);
   border: none;
 }

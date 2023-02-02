@@ -94,4 +94,45 @@ function generateCellDescription(cd, sd) {
   return `${coords} - ${shortName} (${longName})`;
 }
 
+function fileLoad() {
+  //
+}
+
+function fileSave() {
+  let hexData = {
+    width: WIDTH,
+    height: HEIGHT,
+    hexes: [],
+  };
+
+  const cells = document.getElementsByClassName("cell-container")[0].children;
+
+  for (const cell of cells) {
+    if (cell.dataset.cellType) {
+      hexData.hexes.push(cell.dataset);
+    }
+  }
+
+  const json = JSON.stringify(hexData, null, 2);
+  const name = prompt("Name of settlement?");
+
+  if (name) {
+    downloadString(json, `${name}.sim`);
+  }
+}
+
+function downloadString(str, name) {
+  const HEADER = "data:application/octet-stream;charset=utf-8,";
+  let url = HEADER + encodeURIComponent(str);
+
+  let link = document.createElement("a");
+  link.href = url;
+  link.download = name;
+  link.style.display = "none";
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 document.addEventListener("DOMContentLoaded", main);

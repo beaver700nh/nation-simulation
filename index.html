@@ -26,7 +26,7 @@
         <button class="selection-clear" onclick="clearSelection()">Clear Selection</button>
       </div>
       <div class="cell-editor">
-        <button class="cell-edit-confirm" onclick="setCellTypes()">Set cells to</button>
+        <button class="cell-edit-confirm" onclick="setCellTypes()">Build hexes as</button>
         <select class="cell-type">
           <optgroup label="Miscellaneous">
             <option value=""    >&mdash;</option>
@@ -94,6 +94,10 @@
             <option value="Rlrd">Railroads</option>
           </optgroup>
         </select>
+      </div>
+      <div class="file-io">
+        <button class="load" onclick="fileLoad()">Import</button>
+        <button class="save" onclick="fileSave()">Export</button>
       </div>
     </div>
     <script src="script.js"></script>
