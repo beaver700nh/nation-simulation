@@ -219,8 +219,24 @@ select.cell-type {
 /* Buildings ******************/
 /******************************/
 
+span.cell[data-cell-type="Road"] {
+  background-color: darkslategray;
+}
+
+span.cell[data-cell-type="Rivr"] {
+  background-color: paleturquoise;
+}
+
+span.cell[data-cell-type="Ocen"] {
+  background-color: lightskyblue;
+}
+
+span.cell[data-cell-type="OfLm"] {
+  background-color: black;
+}
+
 span.cell[data-cell-type="WtFm"] {
-  background-color: bisque;
+  background-color: wheat;
 }
 
 span.cell[data-cell-type="PgFm"] {
@@ -229,4 +245,200 @@ span.cell[data-cell-type="PgFm"] {
 
 span.cell[data-cell-type="Orch"] {
   background-color: palevioletred;
+}
+
+span.cell[data-cell-type="Fndy"] {
+  background-color: firebrick;
+}
+
+span.cell[data-cell-type="GsMl"] {
+  background-color: bisque;
+}
+
+span.cell[data-cell-type="RmMl"] {
+  background-color: lightsalmon;
+}
+
+span.cell[data-cell-type="SwMl"] {
+  background-color: burlywood;
+}
+
+span.cell[data-cell-type="Ship"] {
+  background-color: steelblue;
+}
+
+span.cell[data-cell-type="HpPl"] {
+  background-color: slategray;
+}
+
+span.cell[data-cell-type="ToPl"] {
+  background-color: tan;
+}
+
+span.cell[data-cell-type="RcPl"] {
+  background-color: limegreen;
+}
+
+span.cell[data-cell-type="CoPl"] {
+  background-color: whitesmoke;
+}
+
+span.cell[data-cell-type="SlvP"] {
+  background-color: brown;
+}
+
+span.cell[data-cell-type="FshP"] {
+  background-color: silver;
+}
+
+span.cell[data-cell-type="WhoP"] {
+  background-color: olive;
+}
+
+span.cell[data-cell-type="FurP"] {
+  background-color: darkkhaki;
+}
+
+span.cell[data-cell-type="NvlP"] {
+  background-color: darkcyan;
+}
+
+span.cell[data-cell-type="Whrf"] {
+  background-color: blue;
+}
+
+span.cell[data-cell-type="Pmtg"] {
+  background-color: orange;
+}
+
+span.cell[data-cell-type="Qmtg"] {
+  background-color: orange;
+}
+
+span.cell[data-cell-type="AngC"] {
+  background-color: lightcoral;
+}
+
+span.cell[data-cell-type="Tvrn"] {
+  background-color: goldenrod;
+}
+
+span.cell[data-cell-type="Grsn"] {
+  background-color: linen;
+}
+
+span.cell[data-cell-type="News"] {
+  background-color: lemonchiffon;
+}
+
+span.cell[data-cell-type="Unvy"] {
+  background-color: turquoise;
+}
+
+span.cell[data-cell-type="Shoe"] {
+  background-color: sienna;
+}
+
+span.cell[data-cell-type="Tany"] {
+  background-color: saddlebrown;
+}
+
+span.cell[data-cell-type="Cmm"] {
+  background-color: peru;
+}
+
+span.cell[data-cell-type="SMkt"] {
+  background-color: brown;
+}
+
+span.cell[data-cell-type="FMkt"] {
+  background-color: silver;
+}
+
+span.cell[data-cell-type="WMkt"] {
+  background-color: olive;
+}
+
+span.cell[data-cell-type="FurM"] {
+  background-color: darkkhaki;
+}
+
+span.cell[data-cell-type="NMkt"] {
+  background-color: darkcyan;
+}
+
+span.cell[data-cell-type="Town"] {
+  background-color: moccasin;
+}
+
+span.cell[data-cell-type="Inn"] {
+  background-color: lightgreen;
+}
+
+span.cell[data-cell-type="Hspl"] {
+  background-color: tomato;
+}
+
+span.cell[data-cell-type="Lbry"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="Cths"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="ShFy"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="TxMl"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="Canl"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="FlMl"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="LmMl"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="RgMl"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="RmDs"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="Tnmt"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="CmDk"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="Hotl"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="SBnk"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="NBnk"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="Dept"] {
+  background-color: 
+}
+
+span.cell[data-cell-type="Rlrd"] {
+  background-color: 
 }
