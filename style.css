@@ -207,10 +207,11 @@ button.cell-edit-confirm {
   padding: 5px;
   background-color: var(--color2);
   border: none;
+  white-space: nowrap;
 }
 
 select.cell-type {
-  flex: 1 0;
+  flex-grow: 1;
   background-color: var(--color2);
   border: none;
 }
