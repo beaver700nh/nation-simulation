@@ -35,7 +35,8 @@ function createCell(ct, cc, st, sc, i, j, width) {
   }
 
   let selection = spawnFromTemplate(st, sc);
-  selection.textContent = `${i + 1}.${j + 1}`;
+  selection.dataset.row = j;
+  selection.dataset.col = i;
 }
 
 function spawnFromTemplate(template, container) {
@@ -51,6 +52,7 @@ function onCellClick(event) {
 
   const index = cell.dataset.index;
   let selection = document.getElementsByClassName("selection-list")[0].children[index];
+  selection.textContent = generateCellDescription(cell.dataset, selection.dataset);
   selection.classList.toggle("hidden");
 }
 
@@ -64,6 +66,32 @@ function clearSelection() {
     const index = cell.dataset.index;
     selections.children[index].classList.add("hidden");
   }
+}
+
+function setCellTypes() {
+  const request = document.getElementsByClassName("cell-type")[0].value;
+  let selected = document.querySelectorAll(".cell.selected");
+
+  for (let cell of selected) {
+    cell.dataset.cellType = request;
+
+    const index = cell.dataset.index;
+    let selection = document.getElementsByClassName("selection-list")[0].children[index];
+    selection.textContent = generateCellDescription(cell.dataset, selection.dataset);
+  }
+}
+
+function generateCellDescription(cd, sd) {
+  const coords = `${parseInt(sd.col, 10) + 1}.${parseInt(sd.row, 10) + 1}`;
+
+  if (!cd.cellType) {
+    return `${coords} - empty hex`;
+  }
+
+  const shortName = cd.cellType;
+  const longName = document.querySelector(`.cell-type > option[value="${shortName}"]`).textContent;
+
+  return `${coords} - ${shortName} (${longName})`;
 }
 
 document.addEventListener("DOMContentLoaded", main);

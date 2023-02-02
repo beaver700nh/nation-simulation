@@ -44,6 +44,10 @@ div#mobile-blocker {
   background-color: var(--color0);
 }
 
+button:hover {
+  filter: brightness(1.2);
+}
+
 p.popup-text {
   display: inline-block;
   width: 60%;
@@ -132,7 +136,18 @@ span.cell.odd-row {
 }
 
 span.cell.selected {
-  background-color: var(--color3);
+  filter: brightness(1.0);
+}
+
+span.cell.selected::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: radial-gradient(circle farthest-side at center, var(--color4) 20%, var(--color1) 30%) !important;
+  opacity: 0.5;
 }
 
 /******************************/
@@ -146,7 +161,7 @@ div#panel {
   justify-content: start;
   align-items: stretch;
   padding: 10px;
-  gap: 10px;
+  gap: 20px;
 }
 
 div.selection-section {
@@ -161,9 +176,9 @@ div.selection-section {
 
 span.selection-list {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   gap: 8px;
   padding: 8px;
   background-color: var(--color2);
@@ -177,6 +192,41 @@ button.selection-clear {
   margin-top: 5px;
   padding: 5px;
   background-color: var(--color2);
-  border-radius: 0px;
   border: none;
+}
+
+div.cell-editor {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 8px;
+}
+
+button.cell-edit-confirm {
+  padding: 5px;
+  background-color: var(--color2);
+  border: none;
+}
+
+select.cell-type {
+  flex: 1 0;
+  background-color: var(--color2);
+  border: none;
+}
+
+/******************************/
+/* Buildings ******************/
+/******************************/
+
+span.cell[data-cell-type="WtFm"] {
+  background-color: bisque;
+}
+
+span.cell[data-cell-type="PgFm"] {
+  background-color: pink;
+}
+
+span.cell[data-cell-type="Orch"] {
+  background-color: palevioletred;
 }

@@ -25,6 +25,15 @@
         </template>
         <button class="selection-clear" onclick="clearSelection()">Clear Selection</button>
       </div>
+      <div class="cell-editor">
+        <button class="cell-edit-confirm" onclick="setCellTypes()">Set cells to</button>
+        <select class="cell-type">
+          <option value=""    >&mdash;</option>
+          <option value="WtFm">Wheat Farm</option>
+          <option value="PgFm">Pig Farm</option>
+          <option value="Orch">Orchard</option>
+        </select>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
