@@ -4,9 +4,9 @@
 
 :root {
   --color0: #111111;
-  --color1: #333333;
-  --color2: #555555;
-  --color3: #888888;
+  --color1: #222222;
+  --color2: #444444;
+  --color3: #666666;
   --color4: #eeeeee;
   --cell-spacing: 2px;
 }
@@ -103,6 +103,7 @@ span.cell {
   margin-bottom: calc(-28.8675% - calc(0.1340 * var(--cell-spacing)));
   clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
   background-color: var(--color2);
+  color: var(--color-4);
   aspect-ratio: 0.8660;
 }
 
@@ -117,4 +118,8 @@ span.cell.leftover {
 span.cell.odd-row {
   margin-left: calc(0.5 * calc(100% + var(--cell-spacing)));
   margin-right: calc(-0.5 * calc(100% + var(--cell-spacing)));
+}
+
+span.cell:active {
+  filter: drop-shadow(3px 3px 0 red);
 }
