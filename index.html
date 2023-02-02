@@ -17,6 +17,14 @@
     </div>
     <div class="main-section" id="panel">
       <!-- Side panel with information and controls -->
+      <div class="selection-section">
+        <span>Selected:</span>
+        <span class="selection-list"></span>
+        <template id="--selection">
+          <span class="selection hidden"></span>
+        </template>
+        <button class="selection-clear" onclick="clearSelection()">Clear Selection</button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

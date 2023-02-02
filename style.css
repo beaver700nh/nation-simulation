@@ -15,6 +15,11 @@
 /* Global Styles **************/
 /******************************/
 
+* {
+  font-family: 'Noto Sans', Roboto, Lato, Helvetica, Arial, sans-serif;
+  color: var(--color4);
+}
+
 @media only screen and (min-aspect-ratio: 4/3) {
   div#mobile-blocker {
     visibility: hidden;
@@ -37,7 +42,6 @@ div#mobile-blocker {
   align-items: center;
   z-index: 999;
   background-color: var(--color0);
-  color: var(--color4);
 }
 
 p.popup-text {
@@ -45,6 +49,10 @@ p.popup-text {
   width: 60%;
   font-size: 1.5em;
   text-align: center;
+}
+
+.hidden {
+  display: none !important;
 }
 
 /******************************/
@@ -72,6 +80,10 @@ div.main-section {
   background-color: var(--color1);
 }
 
+/******************************/
+/* Cell Container *************/
+/******************************/
+
 div#cells {
   flex-grow: 2;
   display: flex;
@@ -79,10 +91,6 @@ div#cells {
   justify-content: center;
   align-items: center;
   padding: 10px;
-}
-
-div#panel {
-  flex-grow: 1;
 }
 
 div.cell-container {
@@ -103,8 +111,11 @@ span.cell {
   margin-bottom: calc(-28.8675% - calc(0.1340 * var(--cell-spacing)));
   clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
   background-color: var(--color2);
-  color: var(--color-4);
   aspect-ratio: 0.8660;
+}
+
+span.cell:hover {
+  filter: brightness(1.2);
 }
 
 span.cell:last-child {
@@ -122,4 +133,50 @@ span.cell.odd-row {
 
 span.cell.selected {
   background-color: var(--color3);
+}
+
+/******************************/
+/* Side Panel *****************/
+/******************************/
+
+div#panel {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: stretch;
+  padding: 10px;
+  gap: 10px;
+}
+
+div.selection-section {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: start;
+  align-items: stretch;
+  gap: 5px;
+  margin: 0px;
+  padding: 0px;
+}
+
+span.selection-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background-color: var(--color2);
+}
+
+span.selection {
+  font-size: 70%;
+}
+
+button.selection-clear {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: var(--color2);
+  border-radius: 0px;
+  border: none;
 }
