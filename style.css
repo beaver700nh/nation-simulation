@@ -8,7 +8,7 @@
   --color2: #444444;
   --color3: #666666;
   --color4: #eeeeee;
-  --cell-spacing: 2px;
+  --cell-spacing: 3px;
 }
 
 /******************************/
@@ -120,6 +120,6 @@ span.cell.odd-row {
   margin-right: calc(-0.5 * calc(100% + var(--cell-spacing)));
 }
 
-span.cell:active {
-  filter: drop-shadow(3px 3px 0 red);
+span.cell.selected {
+  background-color: var(--color3);
 }
