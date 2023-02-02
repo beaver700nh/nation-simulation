@@ -162,6 +162,7 @@ div#panel {
   align-items: stretch;
   padding: 10px;
   gap: 20px;
+  overflow-y: auto;
 }
 
 div.selection-section {
@@ -381,65 +382,65 @@ span.cell[data-cell-type="Hspl"] {
 }
 
 span.cell[data-cell-type="Lbry"] {
-  background-color: 
+  background-color: royalblue;
 }
 
 span.cell[data-cell-type="Cths"] {
-  background-color: 
+  background-color: gold;
 }
 
 span.cell[data-cell-type="ShFy"] {
-  background-color: 
+  background-color: chocolate
 }
 
 span.cell[data-cell-type="TxMl"] {
-  background-color: 
+  background-color: lightgoldenrodyellow;
 }
 
 span.cell[data-cell-type="Canl"] {
-  background-color: 
+  background-color: cyan;
 }
 
 span.cell[data-cell-type="FlMl"] {
-  background-color: 
+  background-color: bisque;
 }
 
 span.cell[data-cell-type="LmMl"] {
-  background-color: 
+  background-color: burlywood;
 }
 
 span.cell[data-cell-type="RgMl"] {
-  background-color: 
+  background-color: darkred;
 }
 
 span.cell[data-cell-type="RmDs"] {
-  background-color: 
+  background-color: navajowhite;
 }
 
 span.cell[data-cell-type="Tnmt"] {
-  background-color: 
+  background-color: linen;
 }
 
 span.cell[data-cell-type="CmDk"] {
-  background-color: 
+  background-color: teal;
 }
 
 span.cell[data-cell-type="Hotl"] {
-  background-color: 
+  background-color: mediumorchid;
 }
 
 span.cell[data-cell-type="SBnk"] {
-  background-color: 
+  background-color: mediumseagreen;
 }
 
 span.cell[data-cell-type="NBnk"] {
-  background-color: 
+  background-color: springgreen;
 }
 
 span.cell[data-cell-type="Dept"] {
-  background-color: 
+  background-color: midnightblue;
 }
 
 span.cell[data-cell-type="Rlrd"] {
-  background-color: 
+  background-color: navy;
 }
