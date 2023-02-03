@@ -83,7 +83,7 @@ function setCellTypes() {
 }
 
 function generateCellDisplayName(shortName) {
-  if (shortName in createSet("", "Rivr", "RivD", "Ocen", "Road", "OfLm")) {
+  if (shortName in createSet("", "Rivr", "Ocen", "Road", "OfLm")) {
     return "";
   }
 
