@@ -31,7 +31,7 @@
 }
 
 div#mobile-blocker {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -42,6 +42,46 @@ div#mobile-blocker {
   align-items: center;
   z-index: 999;
   background-color: var(--color0);
+}
+
+div#popup-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px;
+  z-index: 950;
+  background-color: var(--color0);
+}
+
+p.popup-dialog-text {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: center;
+  margin: 0px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+button.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--color0);
+  border: none;
+  cursor: pointer;
+}
+
+button.popup-close::after {
+  content: "\D7";
+  color: var(--color4);
+  font-size: 120%;
 }
 
 button:hover {

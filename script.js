@@ -108,15 +108,19 @@ function generateCellDisplayName(shortName) {
 
 function generateCellDescription(cd, sd) {
   const coords = `${parseInt(sd.col, 10) + 1}.${parseInt(sd.row, 10) + 1}`;
+  const nametag = generateCellDescriptionName(cd.cellType);
 
-  if (!cd.cellType) {
-    return `${coords} - Empty Land Hex`;
+  return `${coords} - ${nametag}`;
+}
+
+function generateCellDescriptionName(shortName) {
+  if (!shortName) {
+    return "Empty Land Hex";
   }
 
-  const shortName = cd.cellType;
   const longName = document.querySelector(`.cell-type option[value="${shortName}"]`).textContent;
 
-  return `${coords} - ${shortName} (${longName})`;
+  return `${shortName} (${longName})`;
 }
 
 function createSet(...items) {
@@ -291,10 +295,61 @@ function countBuildings() {
 }
 
 function showBuildingCount(counter) {
-  let message = Object.entries(counter)
-    .map(([k, v]) => `${k}: ${v}`)
+  const types = Object.keys(counter);
+
+  if (types.length === 0) {
+    showDialog("No buildings to count!");
+    return;
+  }
+
+  const errors = types.filter((k) => counter[k] === null);
+
+  if (errors.length > 0) {
+    showErrors(errors);
+    return;
+  }
+
+  const formatted = Object.entries(counter)
+    .map(formatBuildingCount)
     .join("\n");
-  alert(message);
+  const message = `Building counts:\n\n${formatted}`;
+
+  showDialog(message);
+}
+
+function formatBuildingCount([k, v]) {
+  const nametag = generateCellDescriptionName(k);
+  return `${v} \xD7 ${nametag}`;
+}
+
+function showErrors(errors) {
+  const list = errors.join(", ");
+  const sizes = errors.map((t) => `${t}: ${BUILDING_SIZES[t]} hexes`).join("\n");
+
+  const message =
+`The following buildings have errors:
+
+${list}
+
+Please make sure all your buildings are of the appropriate size \
+as shown on the Building Reference Sheet:
+
+${sizes}`;
+
+  showDialog(message);
+}
+
+function showDialog(message) {
+  const element = document.getElementById("popup-dialog");
+  element.classList.remove("hidden");
+
+  const text = document.getElementsByClassName("popup-dialog-text")[0];
+  text.innerHTML = message.replaceAll("\n", "<br/>");
+}
+
+function closeDialog(message) {
+  const element = document.getElementById("popup-dialog");
+  element.classList.add("hidden");
 }
 
 document.addEventListener("DOMContentLoaded", main);
