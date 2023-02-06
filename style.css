@@ -241,6 +241,21 @@ button.load, button.save {
   border: none;
 }
 
+div.iptsht-util {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 8px;
+}
+
+button.count {
+  flex-grow: 1;
+  padding: 5px;
+  background-color: var(--color2);
+  border: none;
+}
+
 /******************************/
 /* Buildings ******************/
 /******************************/

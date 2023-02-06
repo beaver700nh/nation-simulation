@@ -83,7 +83,7 @@ function setCellTypes() {
 }
 
 function generateCellDisplayName(shortName) {
-  if (shortName in createSet("", "Rivr", "Ocen", "Road", "OfLm")) {
+  if (shortName in createSet("", "Road", "Rivr", "Ocen", "OfLm")) {
     return "";
   }
 
@@ -196,6 +196,105 @@ function downloadString(str, name) {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+const BUILDING_SIZES = {
+  WtFm: 3,
+  PgFm: 2,
+  Orch: 2,
+  Fndy: 1,
+  GsMl: 1,
+  RmMl: 1,
+  SwMl: 1,
+  Ship: 1,
+  HpPl: 2,
+  ToPl: 2,
+  RcPl: 2,
+  CoPl: 2,
+  SlvP: 1,
+  FshP: 1,
+  WhoP: 1,
+  FurP: 1,
+  NvlP: 1,
+  Whrf: 1,
+  Pmtg: 1,
+  Qmtg: 1,
+  AngC: 1,
+  Tvrn: 1,
+  Grsn: 2,
+  News: 1,
+  Unvy: 3,
+  Shoe: 1,
+  Tany: 1,
+  Cmm:  1,
+  SMkt: 1,
+  FMkt: 1,
+  WMkt: 1,
+  FurM: 1,
+  NMkt: 1,
+  Town: 2,
+  Inn:  2,
+  Hspl: 3,
+  Lbry: 3,
+  Cths: 3,
+  ShFy: 1,
+  TxMl: 1,
+  Canl: 1,
+  FlMl: 1,
+  LmMl: 1,
+  RgMl: 1,
+  RmDs: 1,
+  Tnmt: 3,
+  CmDk: 1,
+  Hotl: 3,
+  SBnk: 3,
+  NBnk: 3,
+  Dept: 3,
+  Rlrd: 1,
+};
+
+function countBuildings() {
+  const cells = document.getElementsByClassName("cell-container")[0].children;
+  let counter = {};
+
+  for (const cell of cells) {
+    const type = cell.dataset.cellType;
+
+    if (!cell.dataset.cellType) {
+      continue;
+    }
+
+    if (!BUILDING_SIZES.hasOwnProperty(type)) {
+      continue;
+    }
+
+    if (counter.hasOwnProperty(type)) {
+      ++counter[type];
+    }
+    else {
+      counter[type] = 1;
+    }
+  }
+
+  for (const type in counter) {
+    const size = BUILDING_SIZES[type];
+
+    if ((counter[type] % size) === 0) {
+      counter[type] /= size;
+    }
+    else {
+      counter[type] = null;
+    }
+  }
+
+  showBuildingCount(counter);
+}
+
+function showBuildingCount(counter) {
+  let message = Object.entries(counter)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join("\n");
+  alert(message);
 }
 
 document.addEventListener("DOMContentLoaded", main);
