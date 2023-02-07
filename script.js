@@ -202,62 +202,67 @@ function downloadString(str, name) {
   document.body.removeChild(link);
 }
 
-const BUILDING_SIZES = {
-  WtFm: 3,
-  PgFm: 2,
-  Orch: 2,
-  Fndy: 1,
-  GsMl: 1,
-  RmMl: 1,
-  SwMl: 1,
-  Ship: 1,
-  HpPl: 2,
-  ToPl: 2,
-  RcPl: 2,
-  CoPl: 2,
-  SlvP: 1,
-  FshP: 1,
-  WhoP: 1,
-  FurP: 1,
-  NvlP: 1,
-  Whrf: 1,
-  Pmtg: 1,
-  Qmtg: 1,
-  AngC: 1,
-  Tvrn: 1,
-  Grsn: 2,
-  News: 1,
-  Unvy: 3,
-  Shoe: 1,
-  Tany: 1,
-  Cmm:  1,
-  SMkt: 1,
-  FMkt: 1,
-  WMkt: 1,
-  FurM: 1,
-  NMkt: 1,
-  Town: 2,
-  Inn:  2,
-  Hspl: 3,
-  Lbry: 3,
-  Cths: 3,
-  ShFy: 1,
-  TxMl: 1,
-  Canl: 1,
-  FlMl: 1,
-  LmMl: 1,
-  RgMl: 1,
-  RmDs: 1,
-  Tnmt: 3,
-  CmDk: 1,
-  Hotl: 3,
-  SBnk: 3,
-  NBnk: 3,
-  Dept: 3,
-  Rlrd: 1,
+const BUILDING_INFO = {
+  WtFm: {size: 3, pop:  50},
+  PgFm: {size: 2, pop:  50},
+  Orch: {size: 2, pop:  50},
+  Fndy: {size: 1, pop: 150},
+  GsMl: {size: 1, pop: 150},
+  RmMl: {size: 1, pop: 150},
+  SwMl: {size: 1, pop: 150},
+  Ship: {size: 1, pop: 300},
+  HpPl: {size: 2, pop:  50},
+  ToPl: {size: 2, pop:  50},
+  RcPl: {size: 2, pop:  50},
+  CoPl: {size: 2, pop:  50},
+  SlvP: {size: 1, pop:  75},
+  FshP: {size: 1, pop:  75},
+  WhoP: {size: 1, pop:  75},
+  FurP: {size: 1, pop:  75},
+  NvlP: {size: 1, pop:  75},
+  Whrf: {size: 1, pop:  50},
+  Pmtg: {size: 1, pop:   0},
+  Qmtg: {size: 1, pop:   0},
+  AngC: {size: 1, pop:   0},
+  Tvrn: {size: 1, pop:  10},
+  Grsn: {size: 2, pop:   0},
+  News: {size: 1, pop:  10},
+  Unvy: {size: 3, pop: 100},
+  Shoe: {size: 1, pop:  50},
+  Tany: {size: 1, pop:  40},
+  Cmm:  {size: 1, pop:   0},
+  SMkt: {size: 1, pop: 125},
+  FMkt: {size: 1, pop: 125},
+  WMkt: {size: 1, pop: 125},
+  FurM: {size: 1, pop: 125},
+  NMkt: {size: 1, pop: 125},
+  Town: {size: 2, pop:  10},
+  Inn:  {size: 2, pop:  10},
+  Hspl: {size: 3, pop:  40},
+  Lbry: {size: 3, pop:   0},
+  Cths: {size: 3, pop:  20},
+  ShFy: {size: 1, pop: 400},
+  TxMl: {size: 1, pop: 400},
+  Canl: {size: 1, pop:  10},
+  FlMl: {size: 1, pop: 400},
+  LmMl: {size: 1, pop: 400},
+  RgMl: {size: 1, pop: 400},
+  RmDs: {size: 1, pop: 400},
+  Tnmt: {size: 3, pop:   0},
+  CmDk: {size: 1, pop:  75},
+  Hotl: {size: 3, pop:  20},
+  SBnk: {size: 3, pop:  20},
+  NBnk: {size: 3, pop:  30},
+  Dept: {size: 3, pop:  30},
+  Rlrd: {size: 1, pop:  10},
 };
 
 function countBuildings() {
+  const counter = getBuildingCount();
+  showBuildingCount(counter);
+}
+
+function getBuildingCount() {
   const cells = document.getElementsByClassName("cell-container")[0].children;
   let counter = {};
 
@@ -268,7 +273,7 @@ function countBuildings() {
       continue;
     }
 
-    if (!BUILDING_SIZES.hasOwnProperty(type)) {
+    if (!BUILDING_INFO.hasOwnProperty(type)) {
       continue;
     }
 
@@ -281,7 +286,7 @@ function countBuildings() {
   }
 
   for (const type in counter) {
-    const size = BUILDING_SIZES[type];
+    const size = BUILDING_INFO[type].size;
 
     if ((counter[type] % size) === 0) {
       counter[type] /= size;
@@ -291,7 +296,7 @@ function countBuildings() {
     }
   }
 
-  showBuildingCount(counter);
+  return counter;
 }
 
 function showBuildingCount(counter) {
@@ -324,7 +329,7 @@ function formatBuildingCount([k, v]) {
 
 function showErrors(errors) {
   const list = errors.join(", ");
-  const sizes = errors.map((t) => `${t}: ${BUILDING_SIZES[t]} hexes`).join("\n");
+  const sizes = errors.map((t) => `${t}: ${BUILDING_INFO[t].size} hexes`).join("\n");
 
   const message =
 `The following buildings have errors:
@@ -337,6 +342,60 @@ as shown on the Building Reference Sheet:
 ${sizes}`;
 
   showDialog(message);
+}
+
+function countPeople() {
+  let counter = getBuildingCount();
+
+  const types = Object.keys(counter);
+  const errors = types.filter((k) => counter[k] === null);
+
+  if (errors.length > 0) {
+    showErrors(errors);
+    return;
+  }
+
+  for (const type in counter) {
+    const pop = BUILDING_INFO[type].pop;
+    counter[type] *= pop;
+  }
+
+  counter = filterNonZero(counter);
+  showPeopleCount(counter);
+}
+
+function filterNonZero(obj) {
+  return Object.fromEntries(
+    Object.entries(obj).filter(
+      ([k, v]) => v !== 0
+    )
+  );
+}
+
+function showPeopleCount(counter) {
+  const total = Object.values(counter).reduce(
+    (a, c) => a + c, 0
+  );
+
+  const formatted = Object.entries(counter)
+    .map(formatPeopleCount)
+    .join("\n");
+
+  const message = (
+    Object.keys(counter).length > 0 ?
+`The settlement requires ${total} people in total.
+
+Specifically:
+${formatted}` :
+`The settlement requires no people because there are no buildings that require people.`
+  );
+
+  showDialog(message);
+}
+
+function formatPeopleCount([k, v]) {
+  const nametag = generateCellDescriptionName(k);
+  return `${v} people - ${nametag}`;
 }
 
 function showDialog(message) {
