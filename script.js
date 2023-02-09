@@ -421,6 +421,11 @@ function calculateSpending() {
   );
 
   const code = prompt("e.g. 2 PgFm, 3 Orch, 1 Grsn ...");
+
+  if (!code) {
+    return;
+  }
+
   const parsed = parseSpending(code);
 
   let total = 0;
