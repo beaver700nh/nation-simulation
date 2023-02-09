@@ -202,59 +202,72 @@ function downloadString(str, name) {
   document.body.removeChild(link);
 }
 
+function showDialog(message) {
+  const element = document.getElementById("popup-dialog");
+  element.classList.remove("hidden");
+
+  const text = document.getElementsByClassName("popup-dialog-text")[0];
+  text.innerHTML = message.replaceAll("\n", "<br/>");
+}
+
+function closeDialog(message) {
+  const element = document.getElementById("popup-dialog");
+  element.classList.add("hidden");
+}
+
 const BUILDING_INFO = {
-  WtFm: {size: 3, pop:  50},
-  PgFm: {size: 2, pop:  50},
-  Orch: {size: 2, pop:  50},
-  Fndy: {size: 1, pop: 150},
-  GsMl: {size: 1, pop: 150},
-  RmMl: {size: 1, pop: 150},
-  SwMl: {size: 1, pop: 150},
-  Ship: {size: 1, pop: 300},
-  HpPl: {size: 2, pop:  50},
-  ToPl: {size: 2, pop:  50},
-  RcPl: {size: 2, pop:  50},
-  CoPl: {size: 2, pop:  50},
-  SlvP: {size: 1, pop:  75},
-  FshP: {size: 1, pop:  75},
-  WhoP: {size: 1, pop:  75},
-  FurP: {size: 1, pop:  75},
-  NvlP: {size: 1, pop:  75},
-  Whrf: {size: 1, pop:  50},
-  Pmtg: {size: 1, pop:   0},
-  Qmtg: {size: 1, pop:   0},
-  AngC: {size: 1, pop:   0},
-  Tvrn: {size: 1, pop:  10},
-  Grsn: {size: 2, pop:   0},
-  News: {size: 1, pop:  10},
-  Unvy: {size: 3, pop: 100},
-  Shoe: {size: 1, pop:  50},
-  Tany: {size: 1, pop:  40},
-  Cmm:  {size: 1, pop:   0},
-  SMkt: {size: 1, pop: 125},
-  FMkt: {size: 1, pop: 125},
-  WMkt: {size: 1, pop: 125},
-  FurM: {size: 1, pop: 125},
-  NMkt: {size: 1, pop: 125},
-  Town: {size: 2, pop:  10},
-  Inn:  {size: 2, pop:  10},
-  Hspl: {size: 3, pop:  40},
-  Lbry: {size: 3, pop:   0},
-  Cths: {size: 3, pop:  20},
-  ShFy: {size: 1, pop: 400},
-  TxMl: {size: 1, pop: 400},
-  Canl: {size: 1, pop:  10},
-  FlMl: {size: 1, pop: 400},
-  LmMl: {size: 1, pop: 400},
-  RgMl: {size: 1, pop: 400},
-  RmDs: {size: 1, pop: 400},
-  Tnmt: {size: 3, pop:   0},
-  CmDk: {size: 1, pop:  75},
-  Hotl: {size: 3, pop:  20},
-  SBnk: {size: 3, pop:  20},
-  NBnk: {size: 3, pop:  30},
-  Dept: {size: 3, pop:  30},
-  Rlrd: {size: 1, pop:  10},
+  WtFm: {size: 3, pop:  50, cost:  50},
+  PgFm: {size: 2, pop:  50, cost:  50},
+  Orch: {size: 2, pop:  50, cost:  50},
+  Fndy: {size: 1, pop: 150, cost: 150},
+  GsMl: {size: 1, pop: 150, cost: 125},
+  RmMl: {size: 1, pop: 150, cost: 150},
+  SwMl: {size: 1, pop: 150, cost: 100},
+  Ship: {size: 1, pop: 300, cost: 150},
+  HpPl: {size: 2, pop:  50, cost: 100},
+  ToPl: {size: 2, pop:  50, cost: 100},
+  RcPl: {size: 2, pop:  50, cost: 100},
+  CoPl: {size: 2, pop:  50, cost: 100},
+  SlvP: {size: 1, pop:  75, cost:  75},
+  FshP: {size: 1, pop:  75, cost:  75},
+  WhoP: {size: 1, pop:  75, cost:  75},
+  FurP: {size: 1, pop:  75, cost:  75},
+  NvlP: {size: 1, pop:  75, cost:  75},
+  Whrf: {size: 1, pop:  50, cost: 125},
+  Pmtg: {size: 1, pop:   0, cost: 100},
+  Qmtg: {size: 1, pop:   0, cost: 100},
+  AngC: {size: 1, pop:   0, cost: 100},
+  Tvrn: {size: 1, pop:  10, cost:  75},
+  Grsn: {size: 2, pop:   0, cost: 100},
+  News: {size: 1, pop:  10, cost: 125},
+  Unvy: {size: 3, pop: 100, cost: 200},
+  Shoe: {size: 1, pop:  50, cost: 150},
+  Tany: {size: 1, pop:  40, cost: 100},
+  Cmm:  {size: 1, pop:   0, cost:  25},
+  SMkt: {size: 1, pop: 125, cost: 150},
+  FMkt: {size: 1, pop: 125, cost: 150},
+  WMkt: {size: 1, pop: 125, cost: 150},
+  FurM: {size: 1, pop: 125, cost: 150},
+  NMkt: {size: 1, pop: 125, cost: 150},
+  Town: {size: 2, pop:  10, cost: 125},
+  Inn:  {size: 2, pop:  10, cost: 100},
+  Hspl: {size: 3, pop:  40, cost: 175},
+  Lbry: {size: 3, pop:   0, cost: 175},
+  Cths: {size: 3, pop:  20, cost: 150},
+  ShFy: {size: 1, pop: 400, cost: 300},
+  TxMl: {size: 1, pop: 400, cost: 250},
+  Canl: {size: 1, pop:  10, cost:  20},
+  FlMl: {size: 1, pop: 400, cost: 250},
+  LmMl: {size: 1, pop: 400, cost: 200},
+  RgMl: {size: 1, pop: 400, cost: 300},
+  RmDs: {size: 1, pop: 400, cost: 300},
+  Tnmt: {size: 3, pop:   0, cost: 250},
+  CmDk: {size: 1, pop:  75, cost: 200},
+  Hotl: {size: 3, pop:  20, cost: 200},
+  SBnk: {size: 3, pop:  20, cost: 150},
+  NBnk: {size: 3, pop:  30, cost: 250},
+  Dept: {size: 3, pop:  30, cost: 100},
+  Rlrd: {size: 1, pop:  10, cost:  10},
 };
 
 function countBuildings() {
@@ -398,17 +411,77 @@ function formatPeopleCount([k, v]) {
   return `${v} people - ${nametag}`;
 }
 
-function showDialog(message) {
-  const element = document.getElementById("popup-dialog");
-  element.classList.remove("hidden");
+function calculateSpending() {
+  alert(
+`Example input:
+3 Orch
+2 Orch, 4 PgFm
+1 GsMl, 2 Fndy
+1 GsMl, 2 Fndy, 2 Grsn`
+  );
 
-  const text = document.getElementsByClassName("popup-dialog-text")[0];
-  text.innerHTML = message.replaceAll("\n", "<br/>");
+  const code = prompt("e.g. 2 PgFm, 3 Orch, 1 Grsn ...");
+  const parsed = parseSpending(code);
+
+  let total = 0;
+  let used = [];
+  let warnings = [];
+
+  for (let bldg of parsed) {
+    if (!bldg.type) {
+      showSpendingError(bldg);
+      return;
+    }
+
+    if (!BUILDING_INFO.hasOwnProperty(bldg.type)) {
+      warnings.push(bldg.type);
+      continue;
+    }
+
+    bldg.amount = bldg.count * BUILDING_INFO[bldg.type].cost;
+    total += bldg.amount;
+
+    used.push(bldg);
+  }
+
+  showSpending(total, used, warnings);
 }
 
-function closeDialog(message) {
-  const element = document.getElementById("popup-dialog");
-  element.classList.add("hidden");
+function showSpendingError(bldg) {
+  const message = `Invalid building ${JSON.stringify(bldg)}.`;
+  showDialog(message);
+}
+
+function parseSpending(code) {
+  return code.split(",").map(
+    (bldg) => {
+      const values = bldg.trim().split(" ");
+      return {count: values[0], type: values[1]};
+    }
+  );
+}
+
+function showSpending(total, used, warnings) {
+  const formatted = used.map(formatSpending).join("\n");
+
+  const message =
+`You spend ${total}:
+
+${formatted}`;
+
+  const warn = (
+    warnings.length === 0 ?
+    "" :
+`\n\nWarning, the following buildings were not recognized and so not used:
+
+${warnings.join("\n")}`
+  );
+
+  showDialog(message + warn);
+}
+
+function formatSpending(bldg) {
+  return `${bldg.amount} - ${bldg.count} \xD7 ${bldg.type}`;
 }
 
 document.addEventListener("DOMContentLoaded", main);

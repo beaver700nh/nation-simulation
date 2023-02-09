@@ -289,7 +289,7 @@ div.iptsht-util {
   gap: 8px;
 }
 
-button.count-buildings, button.count-people {
+div.iptsht-util > button {
   flex-grow: 1;
   padding: 5px;
   background-color: var(--color2);
