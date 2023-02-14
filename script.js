@@ -489,4 +489,21 @@ function formatSpending(bldg) {
   return `${bldg.amount} - ${bldg.count} \xD7 ${bldg.type}`;
 }
 
+function devConsole(event) {
+  if (event.keyCode !== 68) {
+    return;
+  }
+
+  const command = prompt("Command?");
+
+  try {
+    const result = eval(command);
+    alert(`RESULT:\n${result}`);
+  }
+  catch (e) {
+    alert(`ERROR:\n${e}`);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", main);
+document.addEventListener("keydown", devConsole);
