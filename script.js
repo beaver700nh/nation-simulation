@@ -360,6 +360,10 @@ ${sizes}`;
 function countPeople() {
   let counter = getBuildingCount();
 
+  countPeopleInBuildings(counter);
+}
+
+function countPeopleInBuildings(counter) {
   const types = Object.keys(counter);
   const errors = types.filter((k) => counter[k] === null);
 
