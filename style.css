@@ -514,8 +514,7 @@ span.cell[data-cell-type="TxMl"] {
 }
 
 span.cell[data-cell-type="Canl"] {
-  background-color: cyan;
-  color: var(--color0);
+  background-color: darkslategray;
 }
 
 span.cell[data-cell-type="FlMl"] {
@@ -564,5 +563,9 @@ span.cell[data-cell-type="Dept"] {
 }
 
 span.cell[data-cell-type="Rlrd"] {
-  background-color: navy;
+  background-color: darkslategray;
+}
+
+span.cell[data-cell-type="CnRr"] {
+  background-color: darkslategray;
 }
