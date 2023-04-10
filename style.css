@@ -305,8 +305,7 @@ span.cell[data-cell-type="Road"] {
 }
 
 span.cell[data-cell-type="Brdg"] {
-  background-color: yellow;
-  color: var(--color0);
+  background-color: darkslategray;
 }
 
 span.cell[data-cell-type="Rivr"] {
