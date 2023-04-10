@@ -257,6 +257,7 @@ const BUILDING_INFO = {
   ShFy: {size: 1, pop: 400, cost: 300},
   TxMl: {size: 1, pop: 400, cost: 250},
   Canl: {size: 1, pop:  10, cost:  20},
+  CnRd: {size: 1, pop:  10, cost:  20},
   FlMl: {size: 1, pop: 400, cost: 250},
   LmMl: {size: 1, pop: 400, cost: 200},
   RgMl: {size: 1, pop: 400, cost: 300},
@@ -268,6 +269,9 @@ const BUILDING_INFO = {
   NBnk: {size: 3, pop:  30, cost: 250},
   Dept: {size: 3, pop:  30, cost: 100},
   Rlrd: {size: 1, pop:  10, cost:  10},
+  RrRd: {size: 1, pop:  10, cost:  10},
+  CnRr: {size: 1, pop:  10, cost:  30},
+  CrRd: {size: 1, pop:  10, cost:  30},
 };
 
 function countBuildings() {

@@ -514,6 +514,10 @@ span.cell[data-cell-type="TxMl"] {
 }
 
 span.cell[data-cell-type="Canl"] {
+  background-color: var(--color2);
+}
+
+span.cell[data-cell-type="CnRd"] {
   background-color: darkslategray;
 }
 
@@ -563,9 +567,17 @@ span.cell[data-cell-type="Dept"] {
 }
 
 span.cell[data-cell-type="Rlrd"] {
+  background-color: var(--color0);
+}
+
+span.cell[data-cell-type="RrRd"] {
   background-color: darkslategray;
 }
 
 span.cell[data-cell-type="CnRr"] {
+  background-color: var(--color0);
+}
+
+span.cell[data-cell-type="CrRd"] {
   background-color: darkslategray;
 }
