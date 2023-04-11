@@ -274,6 +274,65 @@ const BUILDING_INFO = {
   CrRd: {size: 1, pop:  10, cost:  30},
 };
 
+const BUILDING_ORDER = [
+  "Fndy",
+  "GsMl",
+  "SwMl",
+  "RmMl",
+  "Shoe",
+  "Ship",
+  "ToPl",
+  "RcPl",
+  "HpPl",
+  "CoPl",
+  "FshP",
+  "FurP",
+  "WhoP",
+  "NvlP",
+  "SlvP",
+  "WtFm",
+  "Orch",
+  "PgFm",
+  "Whrf",
+  "Cmm",
+  "Tvrn",
+  "Unvy",
+  "Grsn",
+  "Pmtg",
+  "AngC",
+  "Qmtg",
+  "FMkt",
+  "FurM",
+  "WMkt",
+  "NMkt",
+  "SMkt",
+  "News",
+  "Town",
+  "Inn",
+  "Tany",
+  "Lbry",
+  "Hspl",
+  "CmDk",
+  "Tnmt",
+  "RmDs",
+  "RgMl",
+  "FlMl",
+  "LmMl",
+  "TxMl",
+  "ShFy",
+  "Cths",
+  "SBnk",
+  "NBnk",
+  "Hotl",
+  "Canl",
+  "CnRd",
+  "Dept",
+  "Rlrd",
+  "RrRd",
+  "CnRr",
+  "CrRd",
+];
+
 function countBuildings() {
   const counter = getBuildingCount();
   showBuildingCount(counter);
@@ -332,11 +391,18 @@ function showBuildingCount(counter) {
   }
 
   const formatted = Object.entries(counter)
+    .sort(sortBuildingCount)
     .map(formatBuildingCount)
     .join("\n");
   const message = `Building counts:\n\n${formatted}`;
 
   showDialog(message);
+}
+
+function sortBuildingCount(a, b) {
+  const orderA = BUILDING_ORDER.indexOf(a[0]);
+  const orderB = BUILDING_ORDER.indexOf(b[0]);
+  return orderA - orderB;
 }
 
 function formatBuildingCount([k, v]) {
