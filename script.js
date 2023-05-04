@@ -343,9 +343,19 @@ function getBuildingCount() {
   let counter = {};
 
   for (const cell of cells) {
-    const type = cell.dataset.cellType;
+    let type = cell.dataset.cellType;
 
     if (!cell.dataset.cellType) {
+      continue;
+    }
+
+    if (type == "Brdg") {
+      counter.Brdg = counter.hasOwnProperty("Brdg") ? counter.Brdg + 1 : 1;
+      continue;
+    }
+
+    if (type == "Road" || type == "CnRd" || type == "RrRd") {
+      counter.Road = counter.hasOwnProperty("Road") ? counter.Road + 1 : 1;
       continue;
     }
 
@@ -362,7 +372,7 @@ function getBuildingCount() {
   }
 
   for (const type in counter) {
-    const size = BUILDING_INFO[type].size;
+    const size = ((type == "Road" || type == "Brdg") ? 1 : BUILDING_INFO[type].size);
 
     if ((counter[type] % size) === 0) {
       counter[type] /= size;
@@ -400,8 +410,8 @@ function showBuildingCount(counter) {
 }
 
 function sortBuildingCount(a, b) {
-  const orderA = BUILDING_ORDER.indexOf(a[0]);
-  const orderB = BUILDING_ORDER.indexOf(b[0]);
+  const orderA = ((a[0] == "Road" || a[0] == "Brdg") ? -1 : BUILDING_ORDER.indexOf(a[0]));
+  const orderB = ((b[0] == "Road" || b[0] == "Brdg") ? -1 : BUILDING_ORDER.indexOf(b[0]));
   return orderA - orderB;
 }
 
