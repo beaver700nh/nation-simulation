@@ -216,6 +216,8 @@ function closeDialog(message) {
 }
 
 const BUILDING_INFO = {
+  Road: {size: 1, pop:   0, cost:   0},
+  Brdg: {size: 1, pop:   0, cost:   0},
   WtFm: {size: 3, pop:  50, cost:  50},
   PgFm: {size: 2, pop:  50, cost:  50},
   Orch: {size: 2, pop:  50, cost:  50},
@@ -270,11 +272,13 @@ const BUILDING_INFO = {
   Dept: {size: 3, pop:  30, cost: 100},
   Rlrd: {size: 1, pop:  10, cost:  10},
   RrRd: {size: 1, pop:  10, cost:  10},
-  CnRr: {size: 1, pop:  10, cost:  30},
-  CrRd: {size: 1, pop:  10, cost:  30},
+  CnRr: {size: 1, pop:  20, cost:  30},
+  CrRd: {size: 1, pop:  20, cost:  30},
 };
 
 const BUILDING_ORDER = [
+  "Road",
+  "Brdg",
   "Fndy",
   "GsMl",
   "SwMl",
@@ -349,16 +353,6 @@ function getBuildingCount() {
       continue;
     }
 
-    if (type == "Brdg") {
-      counter.Brdg = counter.hasOwnProperty("Brdg") ? counter.Brdg + 1 : 1;
-      continue;
-    }
-
-    if (type == "Road" || type == "CnRd" || type == "RrRd") {
-      counter.Road = counter.hasOwnProperty("Road") ? counter.Road + 1 : 1;
-      continue;
-    }
-
     if (!BUILDING_INFO.hasOwnProperty(type)) {
       continue;
     }
@@ -372,7 +366,7 @@ function getBuildingCount() {
   }
 
   for (const type in counter) {
-    const size = ((type == "Road" || type == "Brdg") ? 1 : BUILDING_INFO[type].size);
+    const size = BUILDING_INFO[type].size;
 
     if ((counter[type] % size) === 0) {
       counter[type] /= size;
@@ -410,8 +404,8 @@ function showBuildingCount(counter) {
 }
 
 function sortBuildingCount(a, b) {
-  const orderA = ((a[0] == "Road" || a[0] == "Brdg") ? -1 : BUILDING_ORDER.indexOf(a[0]));
-  const orderB = ((b[0] == "Road" || b[0] == "Brdg") ? -1 : BUILDING_ORDER.indexOf(b[0]));
+  const orderA = BUILDING_ORDER.indexOf(a[0]);
+  const orderB = BUILDING_ORDER.indexOf(b[0]);
   return orderA - orderB;
 }
 
